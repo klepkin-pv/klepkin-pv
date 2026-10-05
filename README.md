@@ -29,7 +29,7 @@ Python Backend-разработчик с 3+ годами коммерческо�
 - Проектирую БД и работаю с PostgreSQL, Redis, ClickHouse<br>
 - Контейнеризую сервисы в Docker и настраиваю CI/CD<br>
 - Интегрирую Telegram Bot API, Google API, YooKassa, TrueAPI (Честный ЗНАК)<br>
-- Сейчас углубляю Kafka, ClickHouse, Kubernetes и распределённые системы
+- Сейчас углубляю AWS serverless (Lambda, SQS, DynamoDB, Terraform), ClickHouse и распределённые системы
 </p>
 
 ---
@@ -75,29 +75,19 @@ Python Backend-разработчик с 3+ годами коммерческо�
 
 <p align="left"><i>Коммерческие проекты закрыты NDA — здесь личные работы для практики.</i></p>
 
-** Async Payment Service**
+** AWS Transcribe Pipeline**
 
-FastAPI-сервис обработки платежей с SQLAlchemy 2.0 async, PostgreSQL и RabbitMQ. Idempotency Key, Outbox-паттерн, DLQ, retry webhook, Docker Compose.
+Serverless-пайплайн асинхронной обработки на AWS: файлы загружаются в S3 по presigned URL, проходят через очередь SQS и воркеры на Lambda, транскрибируются AWS Transcribe, скорятся LLM (Bedrock за интерфейсом провайдера), состояние в DynamoDB. Отказоустойчивость: DLQ с redrive, идемпотентность на условных записях, алармы и дашборд в CloudWatch. Вся инфраструктура — Terraform.
 
-`FastAPI` `PostgreSQL` `RabbitMQ` `Docker` `pytest`
+`AWS` `Lambda` `API Gateway` `DynamoDB` `SQS` `Terraform` `FastAPI`
 
-[GitHub](https://github.com/klepkin-pv/async-payment-service)
-
-&nbsp;
-
-** Auction Simulator**
-
-Симулятор рекламных аукционов: механизмы GSP и VCG, CTR-модель, оптимизация ставок, A/B-тестирование.
-
-`Python` `PyTorch` `GSP` `VCG` `CTR` `Jupyter`
-
-[GitHub](https://github.com/klepkin-pv/auction-simulator)
+[GitHub](https://github.com/klepkin-pv/aws-transcribe-pipeline)
 
 &nbsp;
 
 ** Async Wallet API**
 
-Асинхронный FastAPI для управления кошельками: роли, webhook security, SQLAlchemy async + PostgreSQL.
+Асинхронный FastAPI для управления кошельками: роли, idempotency key для операций, SQLAlchemy async + PostgreSQL.
 
 `FastAPI` `asyncio` `PostgreSQL` `JWT` `pytest`
 
@@ -114,24 +104,6 @@ FastAPI + ClickHouse: сбор и агрегация статистики ста
 [GitHub](https://github.com/klepkin-pv/auction-stats-clickhouse)
 
 &nbsp;
-
-** Kubernetes FastAPI Lab**
-
-Учебный проект: FastAPI в Kubernetes (kind/k3s), манифесты Deployment/Service/Ingress, ConfigMap/Secret, healthchecks.
-
-`FastAPI` `Docker` `Kubernetes` `kind` `Ingress`
-
-[GitHub](https://github.com/klepkin-pv/k8s-fastapi-service)
-
-&nbsp;
-
-** Kafka Event Router**
-
-Микросервис маршрутизации событий на FastAPI и Kafka (Redpanda). HTTP → Kafka → consumer → handlers. Практика с брокерами сообщений и event-driven архитектурой.
-
-`FastAPI` `Kafka` `Redpanda` `aiokafka` `Docker` `CI/CD`
-
-[GitHub](https://github.com/klepkin-pv/kafka-event-router)
 
 ---
 
